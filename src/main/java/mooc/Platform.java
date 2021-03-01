@@ -85,12 +85,12 @@ public void registerStudent(Person s) {
 	 * @throws Exception si l'étudiant a déjà une note àce cours
 	 */
 	public void withdraw(Person s, Course c) throws Exception {
-		if(findStudent(myStudent)!=null) {
+		if(enroll(myStudent)!=null) {
                 student.remove(myStudent);
-	}
-        else {
-         System.out.println("Student not found!");
-        }
+                }
+                else {
+                System.out.println("Student not found!");
+                 }
     }
 	/**
 	 * Donner une note à un étudiant pour un cours
@@ -102,7 +102,13 @@ public void registerStudent(Person s) {
 	 * ou si l'étudiant a déjà une note pour ce cours
 	 */
 	public void setMark(Person s, Course c, int mark) throws Exception {
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		if (null == mark) {
+		throw new IllegalArgumentException("mark is null");
+                 this.mark = mark;
+        }
+        else {
+        return mark;
+        }
 	}
 
 	/**
@@ -133,8 +139,8 @@ public void registerStudent(Person s) {
 	 * @throws Exception si l'étudiant n'est pas inscrit à l'université, 
 	 */
 	public Set<Course> coursesForStudent(Person s) throws Exception {
-		throw new UnsupportedOperationException("Pas encore implémenté");
-	}
+
+        }
 
 	/**
 	 * @return les cours auxquels aucun étudiant n'est incrit
