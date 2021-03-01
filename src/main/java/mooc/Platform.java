@@ -121,7 +121,7 @@ public void registerStudent(Person s) {
 	 * ou si l'étudiant n'a pas encore de note à ce cours
 	 */
 	public int getMark(Person s, Course c) throws Exception {
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		
 	}
 
 	/**
