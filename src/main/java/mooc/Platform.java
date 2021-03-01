@@ -4,37 +4,61 @@ import java.util.*;
 
 public class Platform {
 
-	public Platform() {
-	}
+    private final List<Course> myCourse = new LinkedList<>();
+    private HashMap<Integer, Person> myStudent;
 
-	/**
-	 * Ajoute un cours à la liste de cours dispensés
-	 * @param c le cours à ajouter (non null)
-	 */
-	public void addCourse(Course c) {
-		throw new UnsupportedOperationException("Pas encore implémenté");
-	}
+    public Platform() {
+    }
 
-	/**
-	 * @return les étudiants inscrits à l'université
-	 */
-	public Set<Person> students() {
-		throw new UnsupportedOperationException("Pas encore implémenté");
-	}
+    /**
+     * Ajoute un cours à la liste de cours dispensés
+     *
+     * @param c le cours à ajouter (non null)
+     */
+    public void addCourse(Course c) {
+        if (null == c) {
+            throw new IllegalArgumentException("course is null");
+        }
+        myCourse.add(c);
+    }
 
-	/**
-	 * @return les cours dispensés par l'université
-	 */
-	public Set<Course> courses() {
-		throw new UnsupportedOperationException("Pas encore implémenté");
-	}
+    /**
+     * @return les étudiants inscrits à l'université
+     */
+    public Set<Person> students() {
+        Set<Person> result = new HashSet<>();
 
-	/**
-	 * Inscrire un étudiant à l'université
-	 * @param s  l'étudiant à inscrire (non null)
-	 */
-	public void registerStudent(Person s) {
-		throw new UnsupportedOperationException("Pas encore implémenté");
+        for (Person p : myStudent) {
+            result.add(p);
+        }
+        return result;
+    }
+
+    /**
+     * @return les cours dispensés par l'université
+     */
+    public Set<Course> courses() {
+        Set<Course> result = new HashSet<>();
+
+        myCourse.forEach(c -> {
+            result.add(c.getCourse());
+        });
+        return result;
+    }
+}
+
+/**
+ * Inscrire un étudiant à l'université
+ *
+ * @param s l'étudiant à inscrire (non null)
+ */
+public void registerStudent(Person s) {
+		if (null == s) {
+			throw new IllegalArgumentException("Student is not register");
+		}
+      myStudent.add(s);
+
+        
 	}
 
 	/**
@@ -45,7 +69,13 @@ public class Platform {
 	 * ou si le cours n'est pas dispensé par l'université
 	 */
 	public void enroll(Person s, Course c) throws Exception {
-		throw new UnsupportedOperationException("Pas encore implémenté");
+	if (registerStudent == null ) {
+        throw new IllegalArgumentException ("Student is not register");
+        }
+        
+        Enroll e = new Enroll(s, c);
+        s.add(e);
+        c.add(e);
 	}
 
 	/**
@@ -55,9 +85,13 @@ public class Platform {
 	 * @throws Exception si l'étudiant a déjà une note àce cours
 	 */
 	public void withdraw(Person s, Course c) throws Exception {
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		if(findStudent(myStudent)!=null) {
+                student.remove(myStudent);
 	}
-
+        else {
+         System.out.println("Student not found!");
+        }
+    }
 	/**
 	 * Donner une note à un étudiant pour un cours
 	 * @param  s l'étudiant
